@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_events"
+        android:title="Events"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+
+    <item
+        android:id="@+id/nav_places"
+        android:title="Live Places"
+        android:icon="@android:drawable/ic_menu_mapmode"/>
+
+    <item
+        android:id="@+id/nav_shorts"
+        android:title="Shorts"
+        android:icon="@android:drawable/ic_media_play"/>
+
+    <item
+        android:id="@+id/nav_updates"
+        android:title="Live Updates"
+        android:icon="@android:drawable/ic_popup_sync"/>
+</menu>
