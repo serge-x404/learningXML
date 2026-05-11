@@ -40,10 +40,27 @@ class LivePlacesScreen : AppCompatActivity() {
             Category("Education",android.R.drawable.ic_menu_info_details),
             Category("Activities",android.R.drawable.ic_menu_camera),
         )
+
+        val hotelNames = listOf(
+            Category("Oberoi", android.R.drawable.ic_menu_compass),
+            Category("Taj Resorts", android.R.drawable.ic_menu_compass),
+            Category("Grand Hyatt", android.R.drawable.ic_menu_compass),
+            Category("Taj Palace", android.R.drawable.ic_menu_compass),
+            Category("Vivaan", android.R.drawable.ic_menu_compass),
+            Category("More", android.R.drawable.ic_menu_more)
+        )
+
         val adapter = LivePlacesCategoryAdapter(categories)
 
         binding.categoryRecycler.layoutManager = GridLayoutManager(this, 3)
         binding.categoryRecycler.adapter = adapter
+        binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))
+
+        val hotelAdapter = LivePlacesCategoryAdapter(hotelNames)
+
+        binding.categoryRecyclerBottom.layoutManager = GridLayoutManager(this, 3)
+        binding.categoryRecyclerBottom.adapter = hotelAdapter
+        binding.categoryRecyclerBottom.addItemDecoration(CategoryItemDecoration(4))
 
         binding.bottomNav.selectedItemId = R.id.nav_places
         binding.bottomNav.setOnItemSelectedListener {

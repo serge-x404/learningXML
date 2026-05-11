@@ -78,9 +78,14 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:background="@drawable/edittext_background"
             android:gravity="center_vertical"
             android:paddingHorizontal="24dp">
@@ -98,6 +103,10 @@
                 android:src="@android:drawable/ic_menu_search" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -108,13 +117,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Upcoming Events"
-                    android:textStyle="bold" />
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="4dp"
+                        android:text="Upcoming Events"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -131,29 +158,67 @@
                         android:textColor="@color/white" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Explore Categories"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="4dp"
+                        android:text="Explore Categories"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoryRecycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:gravity="center"
-                    android:text="Explore All"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Explore All"
+                        android:layout_marginHorizontal="4dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="1dp"
+                        android:background="#ee6847" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -166,8 +231,8 @@
             app:menu="@menu/bottom_menu" />
     </LinearLayout>
 
-   <include
-       android:id="@+id/drawer"
-       layout="@layout/custom_drawer"/>
+    <include
+        android:id="@+id/drawer"
+        layout="@layout/custom_drawer" />
 
 </LinearLayout>

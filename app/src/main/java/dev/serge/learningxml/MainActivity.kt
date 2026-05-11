@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(
                 this,
-                LoginScreen::class.java
+                HomeScreen::class.java
             )
 
             startActivity(intent)

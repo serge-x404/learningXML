@@ -121,7 +121,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoryRecycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"/>
 
                 <!-- BANNER -->
 
@@ -162,165 +163,193 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
                         android:layout_gravity="center"
-                        android:text="Popular Places"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:gravity="center">
 
-                    <GridLayout
+                        <View
+                            android:layout_width="40dp"
+                            android:layout_height="1dp"
+                            android:background="#ee6847"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Popular Places"
+                            android:layout_marginHorizontal="4dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="40dp"
+                            android:layout_height="1dp"
+                            android:background="#ee6847"/>
+
+                    </LinearLayout>
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/categoryRecyclerBottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:columnCount="3">
+                        android:layout_marginHorizontal="20dp"/>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                    <GridLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginHorizontal="20dp"-->
+<!--                        android:columnCount="3">-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel Taj"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel Taj"-->
+<!--                                android:textStyle="bold" />-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                        </LinearLayout>-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel Oberoi"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel Oberoi"-->
+<!--                                android:textStyle="bold" />-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                        </LinearLayout>-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel Marriot"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel Marriot"-->
+<!--                                android:textStyle="bold" />-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                        </LinearLayout>-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel Courtyard"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel Courtyard"-->
+<!--                                android:textStyle="bold" />-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                        </LinearLayout>-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel Meridian"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel Meridian"-->
+<!--                                android:textStyle="bold" />-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_columnWeight="1"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+<!--                        </LinearLayout>-->
 
-                            <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_compass" />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_columnWeight="1"-->
+<!--                            android:background="@android:color/white"-->
+<!--                            android:elevation="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="10dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hotel"
-                                android:textStyle="bold" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="28dp"-->
+<!--                                android:layout_height="28dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@android:drawable/ic_menu_compass" />-->
 
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Hotel"-->
+<!--                                android:textStyle="bold" />-->
 
-                    </GridLayout>
+<!--                        </LinearLayout>-->
+
+<!--                    </GridLayout>-->
 
                 </LinearLayout>
 
@@ -329,14 +358,33 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
                         android:layout_gravity="center"
-                        android:paddingHorizontal="20dp"
-                        android:text="Explore All"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:gravity="center">
+
+                        <View
+                            android:layout_width="40dp"
+                            android:layout_height="1dp"
+                            android:background="#ee6847"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Explore All"
+                            android:layout_marginHorizontal="4dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="40dp"
+                            android:layout_height="1dp"
+                            android:background="#ee6847"/>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

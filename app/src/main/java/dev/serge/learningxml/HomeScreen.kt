@@ -49,6 +49,7 @@ class HomeScreen : AppCompatActivity() {
         val adapter = HomeScreenCategoryAdapter(categoryAdapter)
         binding.categoryRecycler.layoutManager = GridLayoutManager(this,3)
         binding.categoryRecycler.adapter = adapter
+        binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))
 
         binding.bottomNav.selectedItemId = R.id.nav_events
         binding.bottomNav.setOnItemSelectedListener {
