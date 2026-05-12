@@ -2,6 +2,7 @@ package dev.serge.learningxml
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -42,10 +43,15 @@ class LiveUpdates : AppCompatActivity() {
             }
             true
         }
+        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
 
-//        binding.menuButton.setOnClickListener {
-//            binding.main.openDrawer(GravityCompat.START)
-//        }
+        closeDrawer.setOnClickListener {
+            binding.main.closeDrawer(GravityCompat.START)
+        }
+
+        binding.menuButton.setOnClickListener {
+            binding.main.openDrawer(GravityCompat.START)
+        }
 
         binding.profileButton.setOnClickListener {
             startActivity(Intent(this,Profile::class.java))

@@ -276,11 +276,8 @@
             app:menu="@menu/bottom_menu" />
     </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/white"
-        app:menu="@menu/drawer_menu"/>
+    <include
+        android:id="@+id/customDrawer"
+        layout="@layout/custom_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

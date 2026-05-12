@@ -2,6 +2,7 @@ package dev.serge.learningxml
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,6 +87,12 @@ class LivePlacesScreen : AppCompatActivity() {
             }
             true
         }
+        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
+
+        closeDrawer.setOnClickListener {
+            binding.main.closeDrawer(GravityCompat.START)
+        }
+
 
         binding.menuButton.setOnClickListener {
             binding.main.openDrawer(GravityCompat.START)

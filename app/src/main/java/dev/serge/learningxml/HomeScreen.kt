@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -17,26 +18,15 @@ class HomeScreen : AppCompatActivity() {
     private lateinit var binding: ActivityHomeScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
-
-            val systemBars = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars()
-            )
-
-            view.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
-            )
-
+        setContentView(R.layout.activity_home_screen)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val categoryAdapter = listOf(
             Category("Hotel",android.R.drawable.ic_menu_compass),
@@ -67,12 +57,15 @@ class HomeScreen : AppCompatActivity() {
             }
             true
         }
+        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
 
+        closeDrawer.setOnClickListener {
+            binding.main.closeDrawer(GravityCompat.START)
+        }
 
 
         binding.menuButton.setOnClickListener {
-            Log.i("Button","hello sabjiii")
-            binding.drawer.drawerlayout.openDrawer(GravityCompat.START)
+            binding.main.openDrawer(GravityCompat.START)
         }
 
         binding.profileButton.setOnClickListener {

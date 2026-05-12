@@ -230,12 +230,8 @@
 
     </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/drawer"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/white"
-        app:menu="@menu/drawer_menu"/>
+    <include
+        android:id="@+id/customDrawer"
+        layout="@layout/custom_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
