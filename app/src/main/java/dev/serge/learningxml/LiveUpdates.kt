@@ -2,7 +2,9 @@ package dev.serge.learningxml
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -17,14 +19,13 @@ class LiveUpdates : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_live_updates)
+        binding = ActivityLiveUpdatesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding = ActivityLiveUpdatesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         binding.bottomNav.selectedItemId = R.id.nav_updates
         binding.bottomNav.setOnItemSelectedListener {
@@ -43,18 +44,70 @@ class LiveUpdates : AppCompatActivity() {
             }
             true
         }
-        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
+
+        val closeDrawer = binding.customDrawer.drawerlayout.findViewById<ImageView>(R.id.closeDrawer)
 
         closeDrawer.setOnClickListener {
-            binding.main.closeDrawer(GravityCompat.START)
+            closeDrawer()
         }
 
         binding.menuButton.setOnClickListener {
-            binding.main.openDrawer(GravityCompat.START)
+            Log.i("click","you clicked menuButton")
+            openDrawer()
         }
 
         binding.profileButton.setOnClickListener {
             startActivity(Intent(this,Profile::class.java))
+        }
+
+        binding.busTab.setOnClickListener {
+            selectedTab(binding.busTab)
+        }
+
+        binding.trainTab.setOnClickListener {
+            selectedTab(binding.trainTab)
+        }
+
+        binding.taxiTab.setOnClickListener {
+            selectedTab(binding.taxiTab)
+        }
+    }
+    fun openDrawer() {
+
+        binding.customDrawer.drawerlayout.animate()
+            .translationX(0f)
+            .setDuration(250)
+            .start()
+    }
+
+    fun closeDrawer() {
+
+        binding.customDrawer.drawerlayout.animate()
+            .translationX(-binding.customDrawer.drawerlayout.width.toFloat())
+            .setDuration(250)
+            .start()
+    }
+
+    fun selectedTab(selectedTab: TextView) {
+        val tabs = listOf(
+            binding.busTab,
+            binding.trainTab,
+            binding.taxiTab
+        )
+
+        for (tab in tabs) {
+            tab.setBackgroundResource(
+                R.drawable.tab_unselected
+            )
+            tab.setTextColor(
+                getColor(android.R.color.black)
+            )
+            selectedTab.setBackgroundResource(
+                R.drawable.tab_selected
+            )
+            selectedTab.setTextColor(
+                getColor(android.R.color.white)
+            )
         }
     }
 }

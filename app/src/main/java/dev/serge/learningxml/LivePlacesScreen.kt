@@ -24,14 +24,13 @@ class LivePlacesScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_live_places_screen)
+        binding = ActivityLivePlacesScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding = ActivityLivePlacesScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         val categories = listOf(
             Category("Hotel",android.R.drawable.ic_menu_compass),
@@ -87,19 +86,34 @@ class LivePlacesScreen : AppCompatActivity() {
             }
             true
         }
-        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
+        val closeDrawer = binding.customDrawer.drawerlayout.findViewById<ImageView>(R.id.closeDrawer)
 
         closeDrawer.setOnClickListener {
-            binding.main.closeDrawer(GravityCompat.START)
+            closeDrawer()
         }
 
 
         binding.menuButton.setOnClickListener {
-            binding.main.openDrawer(GravityCompat.START)
+            openDrawer()
         }
 
         binding.profileButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
         }
+    }
+    fun openDrawer() {
+
+        binding.customDrawer.drawerlayout.animate()
+            .translationX(0f)
+            .setDuration(250)
+            .start()
+    }
+
+    fun closeDrawer() {
+
+        binding.customDrawer.drawerlayout.animate()
+            .translationX(-binding.customDrawer.drawerlayout.width.toFloat())
+            .setDuration(250)
+            .start()
     }
 }

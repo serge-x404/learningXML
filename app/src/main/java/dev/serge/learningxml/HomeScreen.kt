@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.core.animate
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,14 +20,13 @@ class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home_screen)
+        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         val categoryAdapter = listOf(
             Category("Hotel",android.R.drawable.ic_menu_compass),
@@ -57,19 +57,35 @@ class HomeScreen : AppCompatActivity() {
             }
             true
         }
-        val closeDrawer = findViewById<ImageView>(R.id.closeDrawer)
+        val closeDrawerButton = binding.drawer.customDrawer.findViewById<ImageView>(R.id.closeDrawer)
 
-        closeDrawer.setOnClickListener {
-            binding.main.closeDrawer(GravityCompat.START)
+        closeDrawerButton.setOnClickListener {
+            closeDrawer()
         }
 
 
         binding.menuButton.setOnClickListener {
-            binding.main.openDrawer(GravityCompat.START)
+            openDrawer()
         }
 
         binding.profileButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
         }
+    }
+
+    fun openDrawer() {
+
+        binding.drawer.drawerlayout.animate()
+            .translationX(0f)
+            .setDuration(250)
+            .start()
+    }
+
+    fun closeDrawer() {
+
+        binding.drawer.drawerlayout.animate()
+            .translationX(-binding.drawer.customDrawer.width.toFloat())
+            .setDuration(250)
+            .start()
     }
 }
