@@ -1,10 +1,12 @@
 package dev.serge.learningxml
 
+import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.core.animate
@@ -36,7 +38,26 @@ class HomeScreen : AppCompatActivity() {
             Category("Sports",android.R.drawable.btn_star),
             Category("More",android.R.drawable.ic_menu_more)
         )
-        val adapter = HomeScreenCategoryAdapter(categoryAdapter)
+        val adapter = HomeScreenCategoryAdapter(categoryAdapter) {category ->
+
+            val fragment = CategoryFragment()
+            val bundle = Bundle()
+
+            bundle.putString(
+                "category",
+                category.title
+            )
+
+            fragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.fragmentContainer,
+                    fragment
+                )
+                .addToBackStack(null)
+                .commit()
+        }
         binding.categoryRecycler.layoutManager = GridLayoutManager(this,3)
         binding.categoryRecycler.adapter = adapter
         binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))

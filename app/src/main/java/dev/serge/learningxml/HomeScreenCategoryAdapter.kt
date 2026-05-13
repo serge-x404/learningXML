@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeScreenCategoryAdapter(
-    private val list: List<Category>
+    private val list: List<Category>,
+    private val onClick: (Category) -> Unit
 ): RecyclerView.Adapter<HomeScreenCategoryAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -31,6 +32,9 @@ class HomeScreenCategoryAdapter(
 
         holder.title.text = item.title
         holder.icon.setImageResource(item.icon)
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
