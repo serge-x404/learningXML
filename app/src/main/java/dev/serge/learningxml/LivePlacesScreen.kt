@@ -102,7 +102,9 @@ class LivePlacesScreen : AppCompatActivity() {
                 .commit()
         }
         supportFragmentManager.addOnBackStackChangedListener {
-            binding.fragmentContainer.visibility = View.GONE
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                binding.fragmentContainer.visibility = View.GONE
+            }
         }
 
         binding.categoryRecyclerBottom.layoutManager = GridLayoutManager(this, 3)

@@ -84,79 +84,10 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@android:color/white"
-                    android:elevation="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="18dp">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="Search Places..."
-                        android:textSize="18sp" />
-
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@android:drawable/ic_menu_search" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoryRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"/>
-
-                <!-- BANNER -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_margin="20dp"
-                    android:background="#2D0066"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Go Live"
-                        android:textColor="@android:color/white"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Let the World Experience Your Moment!"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp" />
-
-                    <Button
-                        android:layout_width="160dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
-                        android:backgroundTint="#ee6847"
-                        android:text="Live Now" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -165,109 +96,183 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/white"
+                        android:elevation="4dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:gravity="center">
+                        android:paddingHorizontal="18dp">
 
-                        <View
-                            android:layout_width="40dp"
-                            android:layout_height="1dp"
-                            android:background="#ee6847"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Popular Places"
-                            android:layout_marginHorizontal="4dp"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="Search Places..."
+                            android:textSize="18sp" />
 
-                        <View
-                            android:layout_width="40dp"
-                            android:layout_height="1dp"
-                            android:background="#ee6847"/>
-
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@android:drawable/ic_menu_search" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"/>
-
+                        android:layout_height="20dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/categoryRecyclerBottom"
+                        android:id="@+id/categoryRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"/>
+                        android:layout_marginHorizontal="20dp" />
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:gravity="center">
-
-                        <View
-                            android:layout_width="40dp"
-                            android:layout_height="1dp"
-                            android:background="#ee6847"/>
+                        android:layout_height="140dp"
+                        android:layout_margin="20dp"
+                        android:background="#2D0066"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Explore All"
-                            android:layout_marginHorizontal="4dp"
-                            android:textSize="16sp"
+                            android:text="Go Live"
+                            android:textColor="@android:color/white"
+                            android:textSize="30sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Let the World Experience Your Moment!"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:layout_width="160dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="#ee6847"
+                            android:text="Live Now" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:background="#ee6847" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="4dp"
+                                android:text="Popular Places"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:background="#ee6847" />
+
+                        </LinearLayout>
+
                         <View
-                            android:layout_width="40dp"
-                            android:layout_height="1dp"
-                            android:background="#ee6847"/>
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/categoryRecyclerBottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp" />
+
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="Where Every Place Tells a Story!"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal">
 
-                        <TextView
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:background="#ee6847" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="4dp"
+                                android:text="Explore All"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:background="#ee6847" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="#Live the magic!" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Where Every Place Tells a Story!"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="#Live the magic!" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
+            </ScrollView>
 
-            </LinearLayout>
-            
             <FrameLayout
                 android:id="@+id/fragmentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
 
         </FrameLayout>
@@ -281,6 +286,6 @@
 
     <include
         android:id="@+id/customDrawer"
-        layout="@layout/custom_drawer"/>
+        layout="@layout/custom_drawer" />
 
 </FrameLayout>
