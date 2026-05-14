@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.internal.TextScale
 
@@ -54,6 +55,12 @@ class CategoryFragment : Fragment() {
         val categoryName = arguments?.getString("category")
 
         text.text = categoryName
+
+        val backButton = view.findViewById<ImageView>(R.id.backButton)
+
+        backButton.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 
     companion object {
