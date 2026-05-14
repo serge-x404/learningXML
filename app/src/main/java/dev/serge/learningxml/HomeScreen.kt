@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -40,6 +41,7 @@ class HomeScreen : AppCompatActivity() {
         )
         val adapter = HomeScreenCategoryAdapter(categoryAdapter) {category ->
 
+            binding.fragmentContainer.visibility = View.VISIBLE
             val fragment = CategoryFragment()
             val bundle = Bundle()
 
@@ -57,6 +59,11 @@ class HomeScreen : AppCompatActivity() {
                 )
                 .addToBackStack(null)
                 .commit()
+        }
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                binding.fragmentContainer.visibility = View.GONE
+            }
         }
         binding.categoryRecycler.layoutManager = GridLayoutManager(this,3)
         binding.categoryRecycler.adapter = adapter
