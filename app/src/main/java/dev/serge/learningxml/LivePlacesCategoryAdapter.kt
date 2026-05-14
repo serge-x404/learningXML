@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class LivePlacesCategoryAdapter(
-    private val list: List<Category>
+    private val list: List<Category>,
+    private val onClick: (Category) -> Unit
 ): RecyclerView.Adapter<LivePlacesCategoryAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -30,6 +31,9 @@ class LivePlacesCategoryAdapter(
 
         holder.title.text = item.title
         holder.icon.setImageResource(item.icon)
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount(): Int {

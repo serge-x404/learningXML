@@ -50,13 +50,60 @@ class LivePlacesScreen : AppCompatActivity() {
             Category("More", android.R.drawable.ic_menu_more)
         )
 
-        val adapter = LivePlacesCategoryAdapter(categories)
+        val adapter = LivePlacesCategoryAdapter(categories) {category ->
+            binding.fragmentContainer.visibility = View.VISIBLE
+            val fragment = CategoryFragment()
+            val bundle = Bundle()
+
+            bundle.putString(
+                "category",
+                category.title
+            )
+
+            fragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.fragmentContainer,
+                    fragment
+                )
+                .addToBackStack(null)
+                .commit()
+        }
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                binding.fragmentContainer.visibility = View.GONE
+            }
+        }
 
         binding.categoryRecycler.layoutManager = GridLayoutManager(this, 3)
         binding.categoryRecycler.adapter = adapter
         binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))
 
-        val hotelAdapter = LivePlacesCategoryAdapter(hotelNames)
+        val hotelAdapter = LivePlacesCategoryAdapter(hotelNames) {category ->
+
+            binding.fragmentContainer.visibility = View.VISIBLE
+            val fragment = CategoryFragment()
+            val bundle = Bundle()
+
+            bundle.putString(
+                "category",
+                category.title
+            )
+
+            fragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.fragmentContainer,
+                    fragment
+                )
+                .addToBackStack(null)
+                .commit()
+        }
+        supportFragmentManager.addOnBackStackChangedListener {
+            binding.fragmentContainer.visibility = View.GONE
+        }
 
         binding.categoryRecyclerBottom.layoutManager = GridLayoutManager(this, 3)
         binding.categoryRecyclerBottom.adapter = hotelAdapter
