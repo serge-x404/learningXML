@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".Shorts">
 
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/shortsPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/shorts_screen"
-        android:textSize="32sp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
