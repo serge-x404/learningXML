@@ -2,30 +2,37 @@ package dev.serge.learningxml
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import dev.serge.learningxml.databinding.ActivityLivePlacesScreenBinding
+import dev.serge.learningxml.databinding.FragmentLivePlacesBinding
 
-class LivePlacesScreen : AppCompatActivity() {
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    private lateinit var binding: ActivityLivePlacesScreenBinding
+class LivePlaces : Fragment() {
+    private var param1: String? = null
+    private var param2: String? = null
+
+    lateinit var binding: FragmentLivePlacesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityLivePlacesScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
         }
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentLivePlacesBinding.inflate(layoutInflater)
+        val root = binding.root
         val categories = listOf(
             Category("Hotel",android.R.drawable.ic_menu_compass),
             Category("Shows",android.R.drawable.ic_media_play),
@@ -56,7 +63,7 @@ class LivePlacesScreen : AppCompatActivity() {
 
             fragment.arguments = bundle
 
-            supportFragmentManager.beginTransaction()
+            childFragmentManager.beginTransaction()
                 .replace(
                     R.id.fragmentContainer,
                     fragment
@@ -64,13 +71,13 @@ class LivePlacesScreen : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
+        childFragmentManager.addOnBackStackChangedListener {
+            if (childFragmentManager.backStackEntryCount == 0) {
                 binding.fragmentContainer.visibility = View.GONE
             }
         }
 
-        binding.categoryRecycler.layoutManager = GridLayoutManager(this, 3)
+        binding.categoryRecycler.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.categoryRecycler.adapter = adapter
         binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))
 
@@ -87,7 +94,7 @@ class LivePlacesScreen : AppCompatActivity() {
 
             fragment.arguments = bundle
 
-            supportFragmentManager.beginTransaction()
+            childFragmentManager.beginTransaction()
                 .replace(
                     R.id.fragmentContainer,
                     fragment
@@ -95,40 +102,16 @@ class LivePlacesScreen : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
+        childFragmentManager.addOnBackStackChangedListener {
+            if (childFragmentManager.backStackEntryCount == 0) {
                 binding.fragmentContainer.visibility = View.GONE
             }
         }
 
-        binding.categoryRecyclerBottom.layoutManager = GridLayoutManager(this, 3)
+        binding.categoryRecyclerBottom.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.categoryRecyclerBottom.adapter = hotelAdapter
         binding.categoryRecyclerBottom.addItemDecoration(CategoryItemDecoration(4))
 
-        binding.bottomNav.selectedItemId = R.id.nav_places
-        binding.bottomNav.setOnItemSelectedListener {
-
-            when(it.itemId) {
-                R.id.nav_events -> {
-                    startActivity(Intent(this, HomeScreen::class.java))
-                    finish()
-                }
-
-                R.id.nav_places -> {
-
-                }
-
-                R.id.nav_shorts -> {
-
-                }
-
-                R.id.nav_updates -> {
-                    startActivity(Intent(this, LiveUpdatesAct::class.java))
-                    finish()
-                }
-            }
-            true
-        }
         val closeDrawer = binding.customDrawer.drawerlayout.findViewById<ImageView>(R.id.closeDrawer)
 
         closeDrawer.setOnClickListener {
@@ -141,9 +124,22 @@ class LivePlacesScreen : AppCompatActivity() {
         }
 
         binding.profileButton.setOnClickListener {
-            startActivity(Intent(this, Profile::class.java))
+            startActivity(Intent(requireContext(), Profile::class.java))
         }
+        return root
     }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            LivePlaces().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+
     fun openDrawer() {
 
         binding.customDrawer.drawerlayout.animate()

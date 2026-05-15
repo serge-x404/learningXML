@@ -9,7 +9,7 @@ import android.view.ViewGroup
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class LiveUpdates : Fragment() {
+class Shorts : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -25,13 +25,13 @@ class LiveUpdates : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_live_updates, container, false)
+        return inflater.inflate(R.layout.fragment_shorts, container, false)
     }
 
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            LiveUpdates().apply {
+            Shorts().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

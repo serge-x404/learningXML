@@ -2,29 +2,36 @@ package dev.serge.learningxml
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import dev.serge.learningxml.databinding.ActivityHomeScreenBinding
+import dev.serge.learningxml.databinding.FragmentEventScreenBinding
 
-class HomeScreen : AppCompatActivity() {
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    private lateinit var binding: ActivityHomeScreenBinding
+class EventScreen : Fragment() {
+    private var param1: String? = null
+    private var param2: String? = null
+    lateinit var binding: FragmentEventScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
         }
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentEventScreenBinding.inflate(layoutInflater)
+        val root = binding.root
         val categoryAdapter = listOf(
             Category("Hotel",android.R.drawable.ic_menu_compass),
             Category("Yoga",android.R.drawable.ic_menu_week),
@@ -33,8 +40,7 @@ class HomeScreen : AppCompatActivity() {
             Category("Sports",android.R.drawable.btn_star),
             Category("More",android.R.drawable.ic_menu_more)
         )
-        val adapter = HomeScreenCategoryAdapter(categoryAdapter) {category ->
-
+        val adapter = HomeScreenCategoryAdapter(categoryAdapter) { category ->
             binding.fragmentContainer.visibility = View.VISIBLE
             val fragment = CategoryFragment()
             val bundle = Bundle()
@@ -46,39 +52,26 @@ class HomeScreen : AppCompatActivity() {
 
             fragment.arguments = bundle
 
-            supportFragmentManager.beginTransaction()
+
+            childFragmentManager.beginTransaction()
                 .replace(
                     R.id.fragmentContainer,
                     fragment
                 )
                 .addToBackStack(null)
                 .commit()
+
         }
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
+        childFragmentManager.addOnBackStackChangedListener {
+            if (childFragmentManager.backStackEntryCount == 0) {
                 binding.fragmentContainer.visibility = View.GONE
             }
         }
-        binding.categoryRecycler.layoutManager = GridLayoutManager(this,3)
+
+        binding.categoryRecycler.layoutManager = GridLayoutManager(requireContext(),3)
         binding.categoryRecycler.adapter = adapter
         binding.categoryRecycler.addItemDecoration(CategoryItemDecoration(4))
 
-        binding.bottomNav.selectedItemId = R.id.nav_events
-        binding.bottomNav.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.nav_events -> {}
-                R.id.nav_places -> {
-                    startActivity(Intent(this, LivePlacesScreen::class.java))
-                    finish()
-                }
-                R.id.nav_shorts -> {}
-                R.id.nav_updates -> {
-                    startActivity(Intent(this, LiveUpdatesAct::class.java))
-                    finish()
-                }
-            }
-            true
-        }
         val closeDrawerButton = binding.drawer.customDrawer.findViewById<ImageView>(R.id.closeDrawer)
 
         closeDrawerButton.setOnClickListener {
@@ -91,8 +84,20 @@ class HomeScreen : AppCompatActivity() {
         }
 
         binding.profileButton.setOnClickListener {
-            startActivity(Intent(this, Profile::class.java))
+            startActivity(Intent(requireContext(), Profile::class.java))
         }
+        return root
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            EventScreen().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 
     fun openDrawer() {
