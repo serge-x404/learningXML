@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import dev.serge.learningxml.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -35,43 +36,67 @@ class MainActivity : AppCompatActivity() {
 
             insets
         }
-        val fragment = EventScreen()
 
-        supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.fragmentContainerView,
-                fragment
-            )
-            .addToBackStack(null)
-            .commit()
+        val navHost = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+
+        val navController = navHost.navController
 
         binding.bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
+            when(it.itemId) {
                 R.id.nav_events -> {
-                    loadFragment(EventScreen())
+                    navController.navigate(R.id.eventScreen)
                 }
                 R.id.nav_places -> {
-                    loadFragment(LivePlaces())
+                    navController.navigate(R.id.livePlaces)
                 }
                 R.id.nav_shorts -> {
-                    loadFragment(Shorts())
+                    navController.navigate(R.id.shorts)
                 }
                 R.id.nav_updates -> {
-                    loadFragment(LiveUpdates())
+                    navController.navigate(R.id.liveUpdates)
                 }
             }
             true
         }
-    }
+        }
 
-    fun loadFragment(fragment: Fragment) {
-
-        supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.fragmentContainerView,
-                fragment
-            )
-            .addToBackStack(null)
-            .commit()
-    }
+//        val fragment = EventScreen()
+//
+//        supportFragmentManager.beginTransaction()
+//            .replace(
+//                R.id.fragmentContainerView,
+//                fragment
+//            )
+//            .addToBackStack(null)
+//            .commit()
+//
+//        binding.bottomNav.setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.nav_events -> {
+//                    loadFragment(EventScreen())
+//                }
+//                R.id.nav_places -> {
+//                    loadFragment(LivePlaces())
+//                }
+//                R.id.nav_shorts -> {
+//                    loadFragment(Shorts())
+//                }
+//                R.id.nav_updates -> {
+//                    loadFragment(LiveUpdates())
+//                }
+//            }
+//            true
+//        }
+//    }
+//
+//    fun loadFragment(fragment: Fragment) {
+//
+//        supportFragmentManager.beginTransaction()
+//            .replace(
+//                R.id.fragmentContainerView,
+//                fragment
+//            )
+//            .addToBackStack(null)
+//            .commit()
+//    }
 }

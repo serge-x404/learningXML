@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/eventScreen">
+
+    <fragment
+        android:id="@+id/eventScreen"
+        android:name="dev.serge.learningxml.EventScreen"
+        android:label="EventScreen"/>
+
+    <fragment
+        android:id="@+id/livePlaces"
+        android:name="dev.serge.learningxml.LivePlaces"
+        android:label="LivePlaces"/>
+
+    <fragment
+        android:id="@+id/shorts"
+        android:name="dev.serge.learningxml.Shorts"
+        android:label="Shorts"/>
+
+    <fragment
+        android:id="@+id/liveUpdates"
+        android:name="dev.serge.learningxml.LiveUpdates"
+        android:label="LiveUpdates"/>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="dev.serge.learningxml.CategoryFragment"
+        android:label="CategoryFragment"/>
+
+</navigation>
